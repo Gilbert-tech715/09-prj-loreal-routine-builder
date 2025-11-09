@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -25,18 +25,40 @@
 
       <!-- Category Filter -->
       <div class="search-section">
-        <select id="categoryFilter">
-          <option value="" disabled selected>Choose a Category</option>
-          <option value="cleanser">Cleansers</option>
-          <option value="moisturizer">Moisturizers & Treatments</option>
-          <option value="haircare">Haircare</option>
-          <option value="makeup">Makeup</option>
-          <option value="hair color">Hair Color</option>
-          <option value="hair styling">Hair Styling</option>
-          <option value="men's grooming">Men's Grooming</option>
-          <option value="suncare">Suncare</option>
-          <option value="fragrance">Fragrance</option>
-        </select>
+        <div class="filter-container">
+          <label for="categoryFilter" class="visually-hidden"
+            >Filter by Category</label
+          >
+          <select id="categoryFilter">
+            <option value="">All Categories</option>
+            <option value="cleanser">Cleansers</option>
+            <option value="moisturizer">Moisturizers & Treatments</option>
+            <option value="haircare">Haircare</option>
+            <option value="makeup">Makeup</option>
+            <option value="hair color">Hair Color</option>
+            <option value="hair styling">Hair Styling</option>
+            <option value="men's grooming">Men's Grooming</option>
+            <option value="suncare">Suncare</option>
+            <option value="fragrance">Fragrance</option>
+          </select>
+        </div>
+
+        <div class="search-input-container">
+          <label for="searchInput" class="visually-hidden"
+            >Search products</label
+          >
+          <i class="fa-solid fa-search search-icon"></i>
+          <input
+            id="searchInput"
+            type="text"
+            placeholder="Search products..."
+            autocomplete="off"
+          />
+          <button id="clearSearch" class="clear-search-btn" type="button">
+            <i class="fa-solid fa-times"></i>
+            <span class="visually-hidden">Clear search</span>
+          </button>
+        </div>
       </div>
 
       <!-- Products Grid -->
@@ -75,6 +97,12 @@
 
       <!------- Footer Links ------->
       <footer class="site-footer">
+        <!-- Translate Button -->
+        <button id="translateBtn" class="translate-btn" type="button">
+          <i class="fa-solid fa-language"></i>
+          <span id="translateText">Translate</span>
+        </button>
+
         <p>&copy; 2025 L'Oréal. All rights reserved.</p>
         <nav>
           <!-- These URLs are placeholders -->
