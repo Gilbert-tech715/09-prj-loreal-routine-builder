@@ -11,6 +11,10 @@ const clearSearchBtn = document.getElementById("clearSearch");
 const translateBtn = document.getElementById("translateBtn");
 const translateText = document.getElementById("translateText");
 
+/* Cloudflare Worker API endpoint */
+const API_ENDPOINT =
+  "https://gilbertlorealchatbot.gilbertclinton82.workers.dev/";
+
 /* Array to store selected products - load from localStorage if available */
 let selectedProducts = loadSelectedProductsFromStorage();
 
@@ -418,7 +422,7 @@ generateRoutineBtn.addEventListener("click", async () => {
 
   try {
     /* Make API request to Cloudflare Worker */
-    const response = await fetch(OPENAI_API_KEY, {
+    const response = await fetch(API_ENDPOINT, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -430,7 +434,10 @@ generateRoutineBtn.addEventListener("click", async () => {
 
     /* Check if the request was successful */
     if (!response.ok) {
-      throw new Error(`API request failed with status ${response.status}`);
+      const errorText = await response.text();
+      throw new Error(
+        `API request failed with status ${response.status}: ${errorText}`
+      );
     }
 
     /* Parse the response */
@@ -551,7 +558,7 @@ chatForm.addEventListener("submit", async (e) => {
 
   try {
     /* Make API request to Cloudflare Worker with full conversation history */
-    const response = await fetch(OPENAI_API_KEY, {
+    const response = await fetch(API_ENDPOINT, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -569,7 +576,10 @@ chatForm.addEventListener("submit", async (e) => {
 
     /* Check if the request was successful */
     if (!response.ok) {
-      throw new Error(`API request failed with status ${response.status}`);
+      const errorText = await response.text();
+      throw new Error(
+        `API request failed with status ${response.status}: ${errorText}`
+      );
     }
 
     /* Parse the response */
